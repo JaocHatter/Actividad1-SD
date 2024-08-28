@@ -9,7 +9,7 @@ describe("GET /",() =>{
         //nos retorna la respuesta del servidor ante nuestra solicitud!
         const response = await request(app).get("/");
         //Pruebas
-        expect(respose.statusCode).toEqual(200); //nos retorne 200 httpStatus
+        expect(response.statusCode).toEqual(200); //nos retorne 200 httpStatus
         expect(response.text).toBe("Hello World!"); //nuestro Hello World
     });
 });
