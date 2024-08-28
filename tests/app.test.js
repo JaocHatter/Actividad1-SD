@@ -1,5 +1,5 @@
 const request = require("supertest");
-const app = express("../src/app.js");
+const app = require("../src/app.js");
 
 //describe(...): Es una función proporcionada por Jest que agrupa varias pruebas relacionadas. 
 //En este caso, agrupa las pruebas relacionadas con la ruta GET /
