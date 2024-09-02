@@ -1,32 +1,33 @@
 name: CI/CD Pipeline
 
+# Instacias las operaciones que iniciaran el workflow
 on: 
-    push:
+    push: # Inicia el workflow si realizas push desde la rama main
         branches:
-            - main
-    pull_request:
+            - main 
+    pull_request: # Inicia el workflow si realizas pull_requeste desde la rama main
         branches:
             - main
 
 
-jobs:
+jobs: 
     build:
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-latest # Indicas que el trabajo se realizara en una VM con la ultima version de ubuntu
         steps:
-          - name: Checkout code
-            uses: actions/checkout@v2
+          - name: Checkout code 
+            uses: actions/checkout@v2 # El primer paso sera clonar el repositorio en esta VM
           - name: Set Up Node.js
-            uses: actions/setup-node@v2
+            uses: actions/setup-node@v2 # El segundo paso será instalar node version 14
             with:
                 node-version: '14'
-          - name: Install dependencies
+          - name: Install dependencies # Literalmente instalar las dependencias necesarias
             run: npm install
-          - name: Run tests
+          - name: Run tests # Ejecutamos npm test en la VM
             run: npm test
-          - name: Build Docker image
-            run: docker build -t devops-practice
-          - name: Running Docker image
-            run: docker run -p 3000:3000 devops-practice
+          #- name: Build Docker image # Literal lo dice xd
+            #run: docker build -t devops-practice
+          #- name: Running Docker image # Iniciamos el servidor en el puerto 3000
+            #run: docker run -p 3000:3000 devops-practice
 
 
 
